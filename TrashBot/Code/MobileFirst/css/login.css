@@ -15,7 +15,7 @@
 
 body
 {
-    background-color: #E6FFDA;
+    background: linear-gradient(to top,#E6FFDA, #8FCC72);
     padding: 20px;
 }
 
