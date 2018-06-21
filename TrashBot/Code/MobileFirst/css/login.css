@@ -1,6 +1,6 @@
 /*Import fonts*/
 @import url('https://fonts.googleapis.com/css?family=Caveat|Gloria+Hallelujah|Permanent+Marker');
-
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed');
 
 *
 {
@@ -9,13 +9,13 @@
     box-sizing: border-box;  
     color: #737F6D;
     text-align: center;
-    font-family: 'Caveat', cursive;
+    font-family: 'Encode Sans Condensed', sans-serif;
     font-size: 15px;
 }
 
 body
 {
-    background: linear-gradient(to top,#E6FFDA, #8FCC72);
+    background: linear-gradient(to left,#E6FFDA, #8FCC72);
     padding: 20px;
 }
 
