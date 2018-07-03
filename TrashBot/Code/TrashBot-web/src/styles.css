@@ -26,8 +26,9 @@ mat-card {
   
 }
 
-
-/*
+body{
+  margin: 0;
+}
 
 @mixin mat-input-theme($theme) {
   $primary: map-get($theme, primary);
@@ -55,4 +56,4 @@ mat-card {
   .mat-form-field-invalid .mat-input-element {
     caret-color: mat-color($warn);
   }
-} */
+} 

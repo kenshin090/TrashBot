@@ -52,6 +52,8 @@ import {
   MatTooltipModule,
   MatTreeModule,
 } from '@angular/material';
+import { MenuNavComponent } from './menu-nav/menu-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,8 @@ import {
     HeaderComponent,
     LoginComponent,
     MenuComponent,
-    SidenavComponent
+    SidenavComponent,
+    MenuNavComponent
   ],
 
   imports: [
@@ -108,7 +111,8 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    LayoutModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
