@@ -7,20 +7,32 @@
       </mat-card-header>
     <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <p>Please login to continue</p>
+        <p>Bienvenido</p>
         <mat-form-field class="full-width-input">
-          <input matInput placeholder="User" formControlName="userName" required>
+          <input matInput placeholder="Usuario..." formControlName="userName" required>
           <mat-error *ngIf="isFieldInvalid('userName')">
-            Please inform your user name
+            Ingrese su usuario
           </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width-input">
-          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <input matInput type="password" placeholder="Constraseña..." formControlName="password" required>
           <mat-error *ngIf="isFieldInvalid('userName')">
-            Please inform your password
+            Ingrese su contraseña
           </mat-error>
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Login</button>
+        <button mat-raised-button color="primary" type="submit">Ingresar</button>
+        <div class="containerLink">
+        <div>
+        <a routerLink="/register" >
+          Registrarse
+        </a>
+      </div>
+      <div>
+        <a routerLink="/resetPass" >
+          ¿Has olvidado tu contraseña?
+        </a>
+      </div>
+    </div>
       </form>
     </mat-card-content>
   </mat-card>

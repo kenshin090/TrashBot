@@ -10,7 +10,6 @@ import { AuthService } from './auth/auth.service';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { MenuComponent } from './menu/menu.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
@@ -54,6 +53,8 @@ import {
 } from '@angular/material';
 import { MenuNavComponent } from './menu-nav/menu-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { RegisterComponent } from './register/register.component'
 
 @NgModule({
   declarations: [
@@ -61,9 +62,10 @@ import { LayoutModule } from '@angular/cdk/layout';
     HomeComponent,
     HeaderComponent,
     LoginComponent,
-    MenuComponent,
     SidenavComponent,
-    MenuNavComponent
+    MenuNavComponent,
+    RegisterComponent,
+    ResetPasswordComponent
   ],
 
   imports: [

@@ -5,7 +5,7 @@ import { User } from './user';
 
 @Injectable()
 export class AuthService {
-  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
