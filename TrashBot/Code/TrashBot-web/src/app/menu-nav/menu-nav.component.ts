@@ -13,6 +13,8 @@ export class MenuNavComponent {
 
   isLoggedIn$: Observable<boolean>;
 
+  estaLogueado:string = localStorage.getItem('token');
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)

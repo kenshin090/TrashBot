@@ -9,14 +9,14 @@
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <p>Bienvenido</p>
         <mat-form-field class="full-width-input">
-          <input matInput placeholder="Usuario..." formControlName="userName" required>
-          <mat-error *ngIf="isFieldInvalid('userName')">
+          <input matInput placeholder="Usuario..." formControlName="email" required>
+          <mat-error *ngIf="isFieldInvalid('email')">
             Ingrese su usuario
           </mat-error>
         </mat-form-field>
         <mat-form-field class="full-width-input">
           <input matInput type="password" placeholder="Constraseña..." formControlName="password" required>
-          <mat-error *ngIf="isFieldInvalid('userName')">
+          <mat-error *ngIf="isFieldInvalid('password')">
             Ingrese su contraseña
           </mat-error>
         </mat-form-field>

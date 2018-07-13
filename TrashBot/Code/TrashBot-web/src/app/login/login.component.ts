@@ -1,25 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { AuthService } from './../auth/auth.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../auth/user';
+import { LoginService } from './login.service';
+//import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
   private formSubmitAttempt: boolean;
+  private user: User = new User();
+  private error: any;
 
-  constructor(
+  constructor(private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService
+    private loginService: LoginService
   ) {}
 
   ngOnInit() {
     this.form = this.fb.group({
-      userName: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -33,8 +39,29 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      this.authService.login(this.form.value);
+     
+      
+      this.user.email = this.form.controls['email'].value;
+      this.user.password = this.form.controls['password'].value;
+
+      this.loginService.login(this.user).subscribe(
+        res => {
+          console.log("login correcto");
+          this.onReload();
+        }, error => {
+          this.error = error;
+          console.log("error login", error);
+        }
+      );
     }
     this.formSubmitAttempt = true;
   }
+
+  onReload() {
+    this.router.navigate(['/home']);
+    location.reload();
+  }
+
+
+
 }

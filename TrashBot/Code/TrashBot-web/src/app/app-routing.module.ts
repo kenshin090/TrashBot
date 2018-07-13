@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'register', component:  RegisterComponent },
   { path: 'resetPass', component:  ResetPasswordComponent },
   { path: '**', redirectTo: ''},
+  { path: 'home', component: HomeComponent},
   
 ];
 
