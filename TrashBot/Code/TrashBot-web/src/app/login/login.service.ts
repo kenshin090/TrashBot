@@ -19,7 +19,6 @@ export class LoginService {
 
     login(user: User): Observable<Token> {
         
-        debugger;
         let headers = new Headers({
             'email': user.email,
             'password': user.password
@@ -27,8 +26,6 @@ export class LoginService {
 
         return this.http.post(this.apiUrl + '/auth/login', { email:user.email, password: user.password })
             .map((res: Response) =>  {
-                console.log('res',res);
-                debugger;
                 let respuesta: any =  res.json();
                 localStorage.setItem('token', respuesta.access_token);
                 localStorage.setItem('logeado', 'true');

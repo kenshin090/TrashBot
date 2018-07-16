@@ -43,9 +43,10 @@ export class LoginComponent implements OnInit {
       
       this.user.email = this.form.controls['email'].value;
       this.user.password = this.form.controls['password'].value;
-
+      
       this.loginService.login(this.user).subscribe(
         res => {
+          
           console.log("login correcto");
           this.onReload();
         }, error => {
@@ -58,7 +59,8 @@ export class LoginComponent implements OnInit {
   }
 
   onReload() {
-    this.router.navigate(['/home']);
+    debugger;
+    this.router.navigate(['inicio']);
     location.reload();
   }
 

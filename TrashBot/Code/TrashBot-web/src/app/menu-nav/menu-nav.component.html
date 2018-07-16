@@ -32,10 +32,11 @@
           <button mat-button>About</button>
           <button mat-button>Contact</button>
 
-          <button mat-button routerLink="login" *ngIf="!isLoggedIn; else notLoggedIn">Login</button>
-          <ng-template #notLoggedIn>
-            <button mat-button (click)="onLogout()">Logout</button>
-          </ng-template>
+          <!-- <button mat-button routerLink="login" *ngIf="!isLoggedIn; else notLoggedIn">Login</button>
+           -->
+          
+            <button mat-button *ngIf="estaLogueado" (click)="onLogout()">Logout</button>
+         
 
         
 

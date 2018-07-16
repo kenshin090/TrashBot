@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     #Validations
-    validates_presence_of :name, :email, :password_digest
+    validates_presence_of :name, :email, :password_digest, :direccion, :fecha
     validates :email, uniqueness: true
   
     #encrypt password

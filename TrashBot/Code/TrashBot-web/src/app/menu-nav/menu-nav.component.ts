@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from './../auth/auth.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-menu-nav',
@@ -20,7 +21,8 @@ export class MenuNavComponent {
       map(result => result.matches)
     );
     
-  constructor(private breakpointObserver: BreakpointObserver,private authService: AuthService) {}
+  constructor(private breakpointObserver: BreakpointObserver,private authService: AuthService,private route: ActivatedRoute,
+    private router: Router) {}
 
 
   ngOnInit() {
@@ -28,7 +30,13 @@ export class MenuNavComponent {
   }
 
   onLogout() {
+    localStorage.setItem('token','');
     this.authService.logout();
+
+    this.router.navigate(['login']);
+    location.reload();
   }
+
+  
   
   }
