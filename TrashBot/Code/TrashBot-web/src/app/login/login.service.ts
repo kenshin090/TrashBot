@@ -6,6 +6,7 @@ import {Observable} from  'rxjs/observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import { Register } from '../register/register';
 
 @Injectable()
 export class LoginService {
@@ -32,6 +33,22 @@ export class LoginService {
                 return res.json();
             })
             .catch((error: any) => Observable.throw(error.json()));
+    }
+
+    save(register: Register): Observable<Register> {
+
+        let headers = new Headers({
+            'Content-Type': 'application/json'
+        });
+        debugger;
+        console.log("entro savePais");
+        return this.http.post(this.apiUrl + '/auth/register', register, { headers: headers })
+            .map((res: Response) =>  {
+                localStorage.setItem('xInitToken', res.headers.get('initToken'));
+                return res.json();
+            })
+            .catch((error: any) => Observable.throw(error.json()));
+
     }
 
     /* findById(id: number): Observable<Pais> {
