@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component' ;
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { EventoscreateComponent } from './eventos/eventoscreate/eventoscreate.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'register', component:  RegisterComponent },
   { path: 'resetPass', component:  ResetPasswordComponent },
   { path: 'inicio', component: HomeComponent},
+  { path: 'createEvento', component: EventoscreateComponent},
   { path: '**', redirectTo: ''},
 
 ];

@@ -54,7 +54,9 @@ import {
 import { MenuNavComponent } from './menu-nav/menu-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { RegisterComponent } from './register/register.component'
+import { RegisterComponent } from './register/register.component';
+import { EventoscreateComponent } from './eventos/eventoscreate/eventoscreate.component';
+import { EventoslistComponent } from './eventos/eventoslist/eventoslist.component'
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { RegisterComponent } from './register/register.component'
     SidenavComponent,
     MenuNavComponent,
     RegisterComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    EventoscreateComponent,
+    EventoslistComponent
   ],
 
   imports: [
