@@ -29,9 +29,11 @@ export class MyApp {
   
       }
 
-
-      statusBar.styleDefault();
-      splashScreen.hide();
+      platform.ready().then(() => {
+        statusBar.styleDefault();
+        splashScreen.hide();
+      });
+      
     });
   }
 }

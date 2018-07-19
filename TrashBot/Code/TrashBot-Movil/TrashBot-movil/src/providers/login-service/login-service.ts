@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 
 import {Http, Response, Headers} from '@angular/http';
 import {Observable} from  'rxjs/observable';
+import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -24,7 +23,7 @@ export class LoginServiceProvider {
 
   
   private apiUrl = 'http://localhost:3000';
-  private token: Token = new Token();
+  //private token: Token = new Token();
 
   constructor(private http: Http) {
   }
@@ -32,11 +31,10 @@ export class LoginServiceProvider {
   login(user: User): Observable<Token> {
       
     debugger;
-      let headers = new Headers({
+      /* let headers = new Headers({
           'email': user.email,
           'password': user.password
-      });
-
+      }); */
       return this.http.post(this.apiUrl + '/auth/login', { email:user.email, password: user.password })
           .map((res: Response) =>  {
 
@@ -46,9 +44,24 @@ export class LoginServiceProvider {
               localStorage.setItem('logeado', 'true');
               return res.json();
           })
-          .catch((error: any) => Observable.throw(error.json()));
+          .catch((error: any) => console.log('error',error));
   }
 
+  handleError(error) {
+    console.error(error);
+    return Observable.throw(error || 'Server error');
+    }
+
+  /* onError(res: Response) {
+    const statusCode = res.status;
+    const body = res.json();
+    const error = {
+      statusCode: statusCode,
+      error: body.error
+    };
+    return throwError(error);
+  }
+ */
   /* save(register: Register): Observable<Register> {
 
       let headers = new Headers({

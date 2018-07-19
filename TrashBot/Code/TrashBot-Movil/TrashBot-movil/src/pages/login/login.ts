@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import {User} from '../../app/auth/user';
 import { LoginServiceProvider } from '../../providers/login-service/login-service';
+import {TabsPage} from '../tabs/tabs'
 
 /**
  * Generated class for the LoginPage page.
@@ -42,6 +43,7 @@ export class LoginPage {
       res => {
         debugger;
         console.log("login correcto");
+        this.navCtrl.push(TabsPage);
         
       }, error => {
         debugger;
