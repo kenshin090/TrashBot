@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
 import {Http, Response, Headers} from '@angular/http';
-import {Observable} from  'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
+//import 'rxjs/add/observable/throw';
 
 //import { Register } from '../register/register';
 import {User} from '../../app/auth/user';
@@ -44,12 +44,14 @@ export class LoginServiceProvider {
               localStorage.setItem('logeado', 'true');
               return res.json();
           })
-          .catch((error: any) => console.log('error',error));
+          .catch((error: any) => {
+            return this.handleError(error);
+          });
   }
 
   handleError(error) {
     console.error(error);
-    return Observable.throw(error || 'Server error');
+    return Observable.throw(error.json().error || 'Server error');
     }
 
   /* onError(res: Response) {

@@ -24,12 +24,43 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+        <div *ngIf="error" class="alert alert-danger">{{error.user_authentication}}</div>
         <button ion-button class="submit-btn" full type="submit"
                 [disabled]="!loginForm.form.valid">Login
         </button>
       </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <a routerLink="/register" >
+          Registrarse
+        </a>  
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div>
+          <a routerLink="/resetPass" >
+            ¿Has olvidado tu contraseña?
+          </a>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- <div class="containerLink">
+      <div>
+      <a routerLink="/register" >
+        Registrarse
+      </a>
+    </div>
+    <div>
+        <a routerLink="/resetPass" >
+          ¿Has olvidado tu contraseña?
+        </a>
+      </div>
+    </div> -->
   </form>
 
 </ion-content>
