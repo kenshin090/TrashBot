@@ -7,6 +7,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { RegisterPageModule } from '../pages/register/register.module';
 import { LoginPageModule } from '../pages/login/login.module';
 import { HttpModule } from '@angular/http';
 
@@ -26,6 +27,7 @@ import { LoginServiceProvider } from '../providers/login-service/login-service';
     BrowserModule,
     LoginPageModule,
     HttpModule,
+    RegisterPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

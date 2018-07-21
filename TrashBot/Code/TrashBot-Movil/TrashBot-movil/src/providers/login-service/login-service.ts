@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 //import 'rxjs/add/observable/throw';
 
-//import { Register } from '../register/register';
+import { RegisterObj } from '../../pages/register/registerObj';
 import {User} from '../../app/auth/user';
 import {Token} from '../../app/auth/token';
 
@@ -50,6 +50,7 @@ export class LoginServiceProvider {
   }
 
   handleError(error) {
+    debugger;
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
     }
@@ -64,7 +65,7 @@ export class LoginServiceProvider {
     return throwError(error);
   }
  */
-  /* save(register: Register): Observable<Register> {
+   save(register: RegisterObj): Observable<RegisterObj> {
 
       let headers = new Headers({
           'Content-Type': 'application/json'
@@ -76,8 +77,10 @@ export class LoginServiceProvider {
               localStorage.setItem('xInitToken', res.headers.get('initToken'));
               return res.json();
           })
-          .catch((error: any) => Observable.throw(error.json()));
+          .catch((error: any) => {
+            return this.handleError(error);
+          });
 
-  } */
+  } 
   
 }
