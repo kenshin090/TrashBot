@@ -8,11 +8,13 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Register } from '../register/register';
 
+import { environment } from 'src/environments/environment.prod';
+
 @Injectable()
 export class LoginService {
 
 
-    private apiUrl = 'http://localhost:3000';
+    private apiUrl = environment.AUTH_URL || 'http://localhost:3000';
     private token: Token = new Token();
 
     constructor(private http: Http) {
