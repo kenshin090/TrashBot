@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private eventoService: EventoService) { }
 
-  private eventos: Evento[] = [];
+  public eventos: Evento[] = [];
   private error: any;
 
   ngOnInit() {
