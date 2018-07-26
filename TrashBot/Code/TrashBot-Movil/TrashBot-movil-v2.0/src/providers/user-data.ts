@@ -11,6 +11,7 @@ import 'rxjs/add/operator/catch';
 
 import { User } from "../models/user";
 import { Token } from "../models/token";
+import { RegisterObj } from "../models/registerObj"
 
 
 @Injectable()
@@ -57,7 +58,7 @@ export class UserData {
       }); */
       return this.http.post(this.apiUrl + '/auth/login', { email:user.email, password: user.password })
           .map((res: Response) =>  {
-            
+
             debugger;
               let respuesta: any =  res.json();
 
@@ -81,11 +82,33 @@ export class UserData {
     return Observable.throw(error.json().error || 'Server error');
   }
 
-  signup(username: string): void {
+/*   signup(username: string): void {
     this.storage.set(this.HAS_LOGGED_IN, true);
     this.setUsername(username);
     this.events.publish('user:signup');
   };
+ */
+
+signup(register: RegisterObj): Observable<RegisterObj> {
+
+  let headers = new Headers({
+      'Content-Type': 'application/json'
+  });
+  debugger;
+  console.log("entro savePais");
+  return this.http.post(this.apiUrl + '/auth/register', register, { headers: headers })
+      .map((res: Response) =>  {
+          localStorage.setItem('xInitToken', res.headers.get('initToken'));
+          return res.json();
+      })
+      .catch((error: any) => {
+        return this.handleError(error);
+      });
+
+} 
+
+
+
 
   logout(): void {
     this.storage.remove(this.HAS_LOGGED_IN);

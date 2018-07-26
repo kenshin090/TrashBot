@@ -20,6 +20,7 @@ export class LoginPage {
 
   login: UserOptions = { username: '', password: '' };
   submitted = false;
+
   private error: string;
 
   private user: User = new User();
@@ -37,7 +38,7 @@ export class LoginPage {
       this.userData.login(this.user).subscribe(
         res => {
           debugger;
-          console.log("login correcto");
+          console.log("login correcto", res);
           this.navCtrl.push(TabsPage);
           
         }, error => {
