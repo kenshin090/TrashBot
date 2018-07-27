@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Response, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-
+import {Message} from './model/message.model';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable()
@@ -17,11 +17,11 @@ export class ChatService {
         'Authorization': localStorage.getItem('token')
     });
 
-    chatear(mensaje: any): Observable<any>{
+    chatear(mensaje: Message): Observable<any>{
 
         let msj : any = {"mensaje" : {
             "input": {
-              "text": "Are the stores open early?"
+              "text": mensaje.content
             }}};
 
         return this.http.post(this.apiUrl + '/chats', msj, { headers: this.headers })

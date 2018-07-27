@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { Message} from './model/message.model';
 import { User } from './model/user.model';
 import {ChatService} from './chat.service';
+import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-chat',
@@ -16,7 +17,8 @@ export class ChatComponent implements OnInit {
   public messageContent: string;
   public user : User = new User("Tu", "abc");
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService, 
+    @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
   }
@@ -25,22 +27,22 @@ export class ChatComponent implements OnInit {
     if (!text) {
       return;
     }
-    
     let msj = new Message(this.user, text);
-    this.chatService.chatear(msj).subscribe(
-      res => {
-        console.log(res.output.text);
-      }, error =>{
-        console.log(error);
-      }
-    );
-    // this.socketService.send({
-    //   from: this.user,
-    //   content: message
-    // });
-
+    // this.chatService.chatear(msj).subscribe(
+      //   res => {
+        //     // console.log(res.output.text);
+        //     let response = new Message(new User("TrashBot", "avatar"), res.output.text);
+        //     this.messages.push(response);
+        
+        //   }, error =>{
+          //     console.log(error);
+          //   }
+          // );
+          
     this.messages.push(msj);
     this.messageContent = null;
+    let lista = this.document.getElementById('lista');
+    lista.scrollIntoView(false);
 }
 
 }
