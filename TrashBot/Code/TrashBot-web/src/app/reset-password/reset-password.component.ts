@@ -21,6 +21,10 @@ export class ResetPasswordComponent implements OnInit {
 
   }
 
+  onSubmit() {
+    //TODO
+  }
+
   isFieldInvalid(field: string) {
     return (
       (!this.form.get(field).valid && this.form.get(field).touched) ||
