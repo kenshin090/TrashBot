@@ -15,6 +15,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { SupportPage } from '../pages/support/support';
+import { ChatModule } from "../pages/chat/chat.module";
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -49,7 +50,8 @@ export class ConferenceApp {
     { title: 'Schedule', name: 'Schedule', component: SchedulePage, icon: 'calendar' },
     { title: 'Speakers', name: 'SpeakerList', component: SpeakerListPage, icon: 'contacts' },
     { title: 'Map', name: 'Map', component: MapPage, icon: 'map' },
-    { title: 'About', name: 'About', component: AboutPage, icon: 'information-circle' }
+    { title: 'About', name: 'About', component: AboutPage, icon: 'information-circle' },
+    { title: 'Chat Bot', name: 'chatPage', component: ChatModule, icon: 'information-circle' }
   ];
 
   loggedInPages: PageInterface[] = [
@@ -100,7 +102,7 @@ export class ConferenceApp {
 
   openPage(page: PageInterface) {
     let params = {};
-
+    debugger;
     // the nav component was found using @ViewChild(Nav)
     // setRoot on the nav to remove previous pages and only have this page
     // we wouldn't want the back button to show in this scenario
@@ -111,11 +113,13 @@ export class ConferenceApp {
     // If we are already on tabs just change the selected tab
     // don't setRoot again, this maintains the history stack of the
     // tabs even if changing them from the menu
+    debugger;
     if (this.nav.getActiveChildNavs().length && page.index != undefined) {
       this.nav.getActiveChildNavs()[0].select(page.index);
     } else {
       // Set the root of the nav with params if it's a tab index
       this.nav.setRoot(page.name, params).catch((err: any) => {
+        debugger;
         console.log(`Didn't set nav root: ${err}`);
       });
     }
