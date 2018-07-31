@@ -33,14 +33,19 @@ export class ChatComponent implements OnInit {
         res => {
             // console.log(res.output.text);
             res.forEach(text => {
-              let response = new Message(new User("TrashBot", "avatar"), text);
-              this.messages.push(response);
+
+              let chat_msj = new Message(new User("TrashBot", "avatar"), text);
+              if(text.match(/^p_.*jpg$/)){
+                chat_msj.cssclass = text.replace(/(.*).jpg/, "$1");
+              }
+
+              this.messages.push(chat_msj);
             });
         
           }, error =>{
               console.log(error);
             }
-          );
+    );
     // this.messages = [...this.messages, msj];
     // this.refresh();      
     this.messageContent = null;
