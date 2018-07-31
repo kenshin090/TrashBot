@@ -47,11 +47,11 @@ export class ConferenceApp {
   ];
 
   appPagesIn: PageInterface[] = [
-    { title: 'Schedule', name: 'Schedule', component: SchedulePage, icon: 'calendar' },
-    { title: 'Speakers', name: 'SpeakerList', component: SpeakerListPage, icon: 'contacts' },
+    { title: 'Calendario', name: 'Schedule', component: SchedulePage, icon: 'calendar' },
+    { title: 'Eventos', name: 'SpeakerList', component: SpeakerListPage, icon: 'contacts' },
     { title: 'Map', name: 'Map', component: MapPage, icon: 'map' },
     { title: 'About', name: 'About', component: AboutPage, icon: 'information-circle' },
-    { title: 'Chat Bot', name: 'chatPage', component: ChatModule, icon: 'information-circle' }
+    { title: 'Chat Bot', name: 'chatPage', component: ChatModule, icon: 'chatboxes' }
   ];
 
   loggedInPages: PageInterface[] = [
