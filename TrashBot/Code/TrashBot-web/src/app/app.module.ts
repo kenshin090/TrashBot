@@ -15,6 +15,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
+import { NgxAutoScrollModule } from "ngx-auto-scroll";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   MatAutocompleteModule,
@@ -121,6 +122,7 @@ import { ChatComponent } from './chat/chat.component'
     MatTooltipModule,
     MatTreeModule,
     LayoutModule,
+    NgxAutoScrollModule,
     HttpModule
   ],
   providers: [AuthService, AuthGuard],

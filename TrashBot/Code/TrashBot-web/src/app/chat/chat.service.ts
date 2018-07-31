@@ -26,7 +26,7 @@ export class ChatService {
 
         return this.http.post(this.apiUrl + '/chats', msj, { headers: this.headers })
             .map((res: Response) =>  {
-               // localStorage.setItem('xInitToken', res.headers.get('initToken'));
+                // console.log(res.json());
                 return res.json();
             })
             .catch((error: any) => {

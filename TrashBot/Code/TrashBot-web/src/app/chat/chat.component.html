@@ -1,5 +1,5 @@
 <div class="chat-container">
-  <mat-list id="lista" #lista class="chat-list">
+  <mat-list id="lista" #lista class="chat-list" ngx-auto-scroll lock-y-offset="10" observe-attributes>
     <mat-list-item *ngFor="let message of messages" [ngClass]="[(message.action === undefined && message.from.name === 'Tu')? 'chat-list-item': '']">
       <img mat-list-avatar *ngIf="message.action === undefined && message.from.name !!= 'Tu'" [src]="message.from.avatar">
       <h4 mat-line *ngIf="message.action === undefined">
