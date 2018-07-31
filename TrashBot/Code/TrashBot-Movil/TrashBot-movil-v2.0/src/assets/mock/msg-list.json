@@ -1,0 +1,17 @@
+{
+    "array":[
+      
+      {
+        "messageId":"2",
+        "userId":"210000198410281948",
+        "userName":"Hancock",
+        "userImgUrl":"./assets/to-user.jpg",
+        "toUserId":"140000198202211138",
+        "toUserName":"Luff",
+        "userAvatar":"./assets/to-user.jpg",
+        "time":1491034800000,
+        "message":"        Hola en que puedo ayudarte?",
+        "status":"success"
+      }
+    ]
+  }

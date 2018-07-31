@@ -15,6 +15,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
+import { NgxAutoScrollModule } from "ngx-auto-scroll";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   MatAutocompleteModule,
@@ -56,7 +57,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RegisterComponent } from './register/register.component';
 import { EventoscreateComponent } from './eventos/eventoscreate/eventoscreate.component';
-import { EventoslistComponent } from './eventos/eventoslist/eventoslist.component'
+import { EventoslistComponent } from './eventos/eventoslist/eventoslist.component';
+import { ChatComponent } from './chat/chat.component'
 
 @NgModule({
   declarations: [
@@ -69,7 +71,8 @@ import { EventoslistComponent } from './eventos/eventoslist/eventoslist.componen
     RegisterComponent,
     ResetPasswordComponent,
     EventoscreateComponent,
-    EventoslistComponent
+    EventoslistComponent,
+    ChatComponent
   ],
 
   imports: [
@@ -119,6 +122,7 @@ import { EventoslistComponent } from './eventos/eventoslist/eventoslist.componen
     MatTooltipModule,
     MatTreeModule,
     LayoutModule,
+    NgxAutoScrollModule,
     HttpModule
   ],
   providers: [AuthService, AuthGuard],
