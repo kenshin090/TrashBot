@@ -41,7 +41,7 @@ export class EventoService {
 
     saveEvento(evento: Evento): Observable<Evento> {
    
-        return this.http.post(this.apiUrl + '/api/v1/eventos/', evento, { headers: this.headers })
+        return this.http.post(this.apiUrl + '/eventos/', evento, { headers: this.headers })
             .map((res: Response) =>  {
                 debugger;
                // localStorage.setItem('xInitToken', res.headers.get('initToken'));

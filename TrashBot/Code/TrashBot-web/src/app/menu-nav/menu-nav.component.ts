@@ -1,16 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService } from './../auth/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-menu-nav',
   templateUrl: './menu-nav.component.html',
   styleUrls: ['./menu-nav.component.css']
 })
-export class MenuNavComponent {
+export class MenuNavComponent implements AfterViewInit{
+
+  ngAfterViewInit() {
+    console.log('rr');
+  }
+
+  @ViewChild('drawer') public drawer: MatSidenav;
 
   isLoggedIn$: Observable<boolean>;
 

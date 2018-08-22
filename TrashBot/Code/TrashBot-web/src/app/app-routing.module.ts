@@ -8,6 +8,7 @@ import { ChatComponent } from './chat/chat.component';
 import { RegisterComponent } from './register/register.component' ;
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { EventoscreateComponent } from './eventos/eventoscreate/eventoscreate.component';
+import { EventoslistComponent } from "./eventos/eventoslist/eventoslist.component";
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
