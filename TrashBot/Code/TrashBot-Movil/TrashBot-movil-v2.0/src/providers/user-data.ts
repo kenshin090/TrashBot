@@ -52,7 +52,7 @@ export class UserData {
 
   login(user: User): Observable<Token> {
       
-    debugger;
+    // debugger;
       /* let headers = new Headers({
           'email': user.email,
           'password': user.password
@@ -60,7 +60,7 @@ export class UserData {
       return this.http.post(this.apiUrl + '/auth/login', { email:user.email, password: user.password })
           .map((res: Response) =>  {
 
-            debugger;
+            // debugger;
               let respuesta: any =  res.json();
 
               this.storage.set(this.HAS_LOGGED_IN, true);
@@ -78,7 +78,7 @@ export class UserData {
   }
 
   handleError(error) {
-    debugger;
+    // debugger;
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');
   }
@@ -95,7 +95,7 @@ signup(register: RegisterObj): Observable<RegisterObj> {
   let headers = new Headers({
       'Content-Type': 'application/json'
   });
-  debugger;
+  // debugger;
   console.log("entro savePais");
   return this.http.post(this.apiUrl + '/auth/register', register, { headers: headers })
       .map((res: Response) =>  {

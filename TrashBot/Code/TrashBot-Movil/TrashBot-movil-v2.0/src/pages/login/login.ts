@@ -37,12 +37,12 @@ export class LoginPage {
 
       this.userData.login(this.user).subscribe(
         res => {
-          debugger;
+          // debugger;
           console.log("login correcto", res);
           this.navCtrl.push(TabsPage);
           
         }, error => {
-          debugger;
+          // debugger;
           this.error = error;
           console.log("error login", error);
         }

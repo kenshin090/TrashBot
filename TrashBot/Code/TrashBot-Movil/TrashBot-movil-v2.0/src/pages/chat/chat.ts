@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { IonicPage, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { Events, Content } from 'ionic-angular';
 import { ChatService, ChatMessage, UserInfo } from "../../providers/chat-service";
 
@@ -18,18 +18,17 @@ export class Chat {
   editorMsg = '';
   showEmojiPicker = false;
 
-  constructor(navParams: NavParams,
-              private chatService: ChatService,
-              private events: Events,) {
-    // Get the navParams toUserId parameter
-    this.toUser = {
-      id: navParams.get('toUserId'),
-      name: navParams.get('toUserName')
-    };
+  constructor(private chatService: ChatService,
+              private events: Events) {
     // Get mock user information
     this.chatService.getUserInfo()
     .then((res) => {
       this.user = res
+    });
+
+    this.chatService.getTrashbotInfo()
+    .then((res) => {
+      this.toUser = res
     });
   }
 
@@ -74,8 +73,6 @@ export class Chat {
     return this.chatService
     .getMsgList()
     .subscribe(res => {
-      console.log('registro chat',res)
-      debugger;
       this.msgList = res;
       //this.scrollToBottom();
     });
@@ -107,7 +104,7 @@ export class Chat {
       this.focus();
     }
 
-    this.chatService.sendMsg(newMsg)
+    this.chatService.chatear(newMsg)
     .then(() => {
       let index = this.getMsgIndexById(id);
       if (index !== -1) {
@@ -121,14 +118,21 @@ export class Chat {
    * @param msg
    */
   pushNewMsg(msg: ChatMessage) {
-    const userId = this.user.id,
-      toUserId = this.toUser.id;
-    // Verify user relationships
-    if (msg.userId === userId && msg.toUserId === toUserId) {
-      this.msgList.push(msg);
-    } else if (msg.toUserId === userId && msg.userId === toUserId) {
-      this.msgList.push(msg);
-    }
+    // const userId = this.user.id,
+    //   toUserId = this.toUser.id;
+    // // Verify user relationships
+    // if (msg.userId === userId && msg.toUserId === toUserId) {
+    //   this.msgList.push(msg);
+    // } else if (msg.toUserId === userId && msg.userId === toUserId) {
+    //   this.msgList.push(msg);
+    // }
+
+    this.msgList.push(msg);
+    // if (msg.userName === userId && msg.toUserId === toUserId) {
+    //   this.msgList.push(msg);
+    // } else if (msg.toUserId === userId && msg.userId === toUserId) {
+    //   this.msgList.push(msg);
+    // }
     this.scrollToBottom();
   }
 

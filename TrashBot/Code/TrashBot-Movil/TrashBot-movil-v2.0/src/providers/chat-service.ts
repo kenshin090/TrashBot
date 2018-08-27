@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Events } from 'ionic-angular';
 import { map } from 'rxjs/operators/map';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+
 import { Observable } from "rxjs/Observable";
 
 export class ChatMessage {
@@ -28,21 +29,18 @@ export class ChatService {
               private events: Events) {
   }
 
-  mockNewMsg(msg) {
+  mockNewMsg(text) {
     const mockMsg: ChatMessage = {
       messageId: Date.now().toString(),
-      userId: '210000198410281948',
-      userName: 'Hancock',
+      userId: 'trashbot',
+      userName: 'TrashBot',
       userAvatar: './assets/to-user.jpg',
-      toUserId: '140000198202211138',
+      toUserId: 'you',
       time: Date.now(),
-      message: msg.message,
+      message: text,
       status: 'success'
     };
-
-    setTimeout(() => {
-      this.events.publish('chat:received', mockMsg, Date.now())
-    }, Math.random() * 1800)
+    this.events.publish('chat:received', mockMsg, Date.now())
   }
 
   getMsgList(): Observable<ChatMessage[]> {
@@ -51,15 +49,46 @@ export class ChatService {
     .pipe(map(response => response.array));
   }
 
-  sendMsg(msg: ChatMessage) {
-    return new Promise(resolve => setTimeout(() => resolve(msg), Math.random() * 1000))
-    .then(() => this.mockNewMsg(msg));
-  }
+  chatear(mensaje: ChatMessage){
+
+  let msj : any = {"mensaje" : {
+      "input": {
+        "text": mensaje.message.trim()
+      }}};
+
+  let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('token') || ''
+  });
+
+  let apiUrl = 'https://trashbot-api.herokuapp.com/api/v1/chats'
+
+  return this.http.post(apiUrl, msj, { headers: headers }).toPromise()
+    .then((res: Array<string>)=>{
+      res.forEach(text => {
+        this.mockNewMsg(text)
+      });
+
+    })
+    .catch((error: any) => {
+      console.log(error);
+    });
+  
+}
 
   getUserInfo(): Promise<UserInfo> {
     const userInfo: UserInfo = {
-      id: '140000198202211138',
-      name: 'Luff',
+      id: 'you',
+      name: 'Tu',
+      avatar: './assets/user.jpg'
+    };
+    return new Promise(resolve => resolve(userInfo));
+  }
+
+  getTrashbotInfo(): Promise<UserInfo> {
+    const userInfo: UserInfo = {
+      id: 'trashbot',
+      name: 'Trasbot',
       avatar: './assets/user.jpg'
     };
     return new Promise(resolve => resolve(userInfo));
